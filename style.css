@@ -1,18 +1,17 @@
 /* --- গুগল ফন্ট ইম্পোর্ট --- */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Hind+Siliguri:wght@400;600&display=swap');
 
-/* --- রুট ভেরিয়েবল (রঙের জন্য) --- */
+/* --- রুট ভেরিয়েবল (নতুন ডার্ক থিম) --- */
 :root {
-    --primary-color: #6a11cb;
-    --secondary-color: #2575fc;
-    --gradient-bg: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-    --background-color: #f0f2f5; /* আরো ফর্সা ব্যাকগ্রাউন্ড */
-    --card-background: #ffffff;
-    --text-color: #333;
-    --heading-color: #4a00e0;
-    --header-text: #ffffff;
-    --shadow: 0 10px 30px rgba(0, 0, 0, 0.07);
-    --border-radius: 12px;
+    --primary-color: #00f2ea; /* একটি উজ্জ্বল সায়ান অ্যাকসেন্ট */
+    --secondary-color: #00c4ff;
+    --background-color: #0d1117; /* GitHub ডার্ক ব্যাকগ্রাউন্ড */
+    --card-background: #161b22; /* GitHub ডার্ক কার্ড */
+    --text-color: #c9d1d9; /* হালকা ধূসর টেক্সট */
+    --heading-color: #ffffff; /* সাদা হেডিং */
+    --border-color: #30363d;
+    --shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    --border-radius: 10px;
 }
 
 /* --- গ্লোবাল স্টাইল --- */
@@ -31,57 +30,60 @@ body {
     background-color: var(--background-color);
     color: var(--text-color);
     line-height: 1.7;
-    overflow-x: hidden; /* ডানে-বামে স্ক্রল বন্ধ করা */
+    overflow-x: hidden;
 }
 
 .container {
-    max-width: 950px;
+    max-width: 1000px;
     margin: 25px auto;
     padding: 0 20px;
 }
 
 /* --- হেডার এবং নেভিগেশন --- */
 .header-nav {
-    background: var(--gradient-bg);
-    color: var(--header-text);
+    background: var(--card-background);
+    color: var(--heading-color);
     padding: 3rem 2rem;
     text-align: center;
+    border-bottom: 1px solid var(--border-color);
     border-bottom-left-radius: 20px;
     border-bottom-right-radius: 20px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-    position: relative;
+    box-shadow: var(--shadow);
 }
 
 .profile-pic {
     width: 140px;
     height: 140px;
     border-radius: 50%;
-    border: 5px solid white;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    border: 5px solid var(--primary-color);
+    box-shadow: 0 0 20px rgba(0, 242, 234, 0.3);
     margin-bottom: 1rem;
     object-fit: cover;
-    transition: transform 0.3s ease;
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
 }
 .profile-pic:hover {
-    transform: scale(1.05); /* ছবি হোভার করলে বড় হবে */
+    transform: scale(1.05) rotate(5deg);
+    box-shadow: 0 0 35px rgba(0, 242, 234, 0.5);
 }
 
 .header-nav h1 {
     margin: 0.5rem 0;
     font-size: 2.5rem;
     font-weight: 700;
+    color: var(--heading-color);
 }
 
 /* --- টাইপিং ইফেক্টের স্টাইল --- */
 .tagline {
     font-size: 1.25rem;
-    opacity: 0.9;
+    color: var(--text-color);
     margin: 0.5rem 0;
-    height: 40px; /* টাইপিং এর জন্য নির্দিষ্ট উচ্চতা */
+    height: 40px;
     display: inline-block;
 }
-.typed-cursor { /* typed.js এর কার্সর */
+.typed-cursor {
     font-size: 1.3rem;
+    color: var(--primary-color);
     opacity: 1;
     animation: blink 0.7s infinite;
 }
@@ -96,18 +98,21 @@ nav {
 }
 
 nav a {
-    color: var(--header-text);
+    color: var(--heading-color);
     text-decoration: none;
     padding: 10px 20px;
-    border-radius: 25px; /* পিল বাটন */
+    border-radius: 25px;
     margin: 0 8px;
     font-weight: 600;
     font-size: 1rem;
-    transition: background-color 0.3s ease, transform 0.2s ease;
+    border: 1px solid transparent;
+    transition: all 0.3s ease;
 }
 
 nav a:hover, nav a.active {
-    background-color: rgba(255, 255, 255, 0.25);
+    background-color: var(--primary-color);
+    color: #0d1117; /* হোভারে টেক্সট ডার্ক হবে */
+    border-color: var(--primary-color);
     transform: translateY(-2px);
 }
 
@@ -118,31 +123,26 @@ nav a:hover, nav a.active {
     padding: 2rem 2.5rem;
     margin-bottom: 1.8rem;
     box-shadow: var(--shadow);
-    opacity: 0; /* অ্যানিমেশনের জন্য প্রথমে হাইড থাকবে */
-    transform: translateY(30px); /* অ্যানিমেশনের জন্য নিচে থাকবে */
+    border: 1px solid var(--border-color);
+    opacity: 0;
+    transform: translateY(30px);
     animation: fadeInSlideUp 0.6s forwards ease-out;
 }
 
-/* কার্ড লোড হওয়ার অ্যানিমেশন */
 @keyframes fadeInSlideUp {
     to {
         opacity: 1;
         transform: translateY(0);
     }
 }
-/* কার্ডগুলো যেন একটার পর একটা লোড হয় (Staggered Animation) */
-.card:nth-child(1) { animation-delay: 0.1s; }
-.card:nth-child(2) { animation-delay: 0.2s; }
-.card:nth-child(3) { animation-delay: 0.3s; }
-.card:nth-child(4) { animation-delay: 0.4s; }
-.card:nth-child(5) { animation-delay: 0.5s; }
-.card:nth-child(6) { animation-delay: 0.6s; }
-.card:nth-child(7) { animation-delay: 0.7s; }
+/* কার্ড লোড অ্যানিমেশন ডিলে */
+.card { animation-delay: 0.1s; }
+.card.stagger { animation-delay: calc(var(--order) * 0.1s); }
 
 
 .card h2 {
-    color: var(--heading-color);
-    border-bottom: 2px solid #eee;
+    color: var(--primary-color);
+    border-bottom: 2px solid var(--border-color);
     padding-bottom: 0.8rem;
     margin-top: 0;
     margin-bottom: 1.5rem;
@@ -156,8 +156,8 @@ nav a:hover, nav a.active {
 }
 .info-list li {
     padding: 10px 0;
-    border-bottom: 1px solid #f0f0f0;
     font-size: 1rem;
+    border-bottom: 1px solid var(--border-color);
 }
 .info-list li:last-child { border-bottom: none; }
 .info-list strong {
@@ -168,7 +168,115 @@ nav a:hover, nav a.active {
     font-weight: 600;
 }
 
-/* --- সোশ্যাল লিংক বাটন (আরো সুন্দর ডিজাইন) --- */
+/* --- সার্ভিস সেকশন --- */
+.service-item {
+    margin-bottom: 1.5rem;
+    padding: 1.5rem;
+    background: #0d1117; /* কার্ডের ভেতরে আরেকটু ডার্ক */
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.service-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0, 242, 234, 0.1);
+}
+.service-item h3 {
+    color: var(--secondary-color);
+    margin-bottom: 0.5rem;
+}
+.btn {
+    display: inline-block;
+    background: var(--primary-color);
+    color: #0d1117;
+    padding: 12px 25px;
+    text-decoration: none;
+    border-radius: 25px;
+    font-weight: 700;
+    margin-top: 1rem;
+    transition: all 0.3s ease;
+}
+.btn:hover {
+    background-color: var(--secondary-color);
+    transform: scale(1.05);
+}
+
+/* --- ওয়ার্ক এক্সপেরিয়েন্স টাইমলাইন --- */
+.timeline {
+    position: relative;
+    padding-left: 1.5rem;
+    border-left: 2px solid var(--primary-color);
+}
+.timeline-item {
+    position: relative;
+    margin-bottom: 2rem;
+}
+.timeline-item::before { /* টাইমলাইন ডট */
+    content: '';
+    position: absolute;
+    left: -2.3rem;
+    top: 5px;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background-color: var(--primary-color);
+    border: 3px solid var(--background-color);
+}
+.timeline-item h3 {
+    color: var(--heading-color);
+    margin: 0;
+}
+.timeline-item .date {
+    font-size: 0.9rem;
+    color: var(--secondary-color);
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+/* --- হ্যাকিং টুলস গ্রিড --- */
+.tools-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+}
+.tool-card {
+    background: #0d1117;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.tool-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 20px rgba(0, 242, 234, 0.1);
+}
+.tool-card h3 {
+    color: var(--secondary-color);
+    margin-bottom: 0.5rem;
+}
+.tool-card p {
+    font-size: 0.95rem;
+    flex-grow: 1; /* বর্ণনাকে জায়গা দেয় */
+    margin-bottom: 1rem;
+}
+.tool-card .btn-github {
+    background-color: #24292e;
+    color: white;
+    font-weight: 600;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-align: center;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+.tool-card .btn-github:hover {
+    background-color: #333;
+}
+
+/* --- সোশ্যাল লিংক বাটন --- */
 .social-links {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
@@ -184,29 +292,10 @@ nav a:hover, nav a.active {
     text-align: center;
     transition: all 0.3s ease-in-out;
     font-size: 0.95rem;
-    position: relative;
-    overflow: hidden;
-    z-index: 1;
-}
-.social-links a::before { /* হোভার ইফেক্টের জন্য */
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(255, 255, 255, 0.15);
-    transform: scaleX(0);
-    transform-origin: left;
-    transition: transform 0.3s ease;
-    z-index: -1;
 }
 .social-links a:hover {
     transform: translateY(-3px);
     box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-}
-.social-links a:hover::before {
-    transform: scaleX(1);
 }
 
 /* বাটন কালার */
@@ -214,11 +303,9 @@ nav a:hover, nav a.active {
 .link-facebook { background-color: #1877F2; }
 .link-messenger { background-color: #00B2FF; }
 .link-instagram { background-color: #E4405F; }
-.link-threads { background-color: #000000; }
+.link-threads { background-color: #000000; border: 1px solid #fff; }
 .link-email { background-color: #EA4335; }
-.link-fb-group { background-color: #16A2B8; }
-.link-fb-page { background-color: #3b5998; }
-.link-telegram { background-color: #2AABEE; }
+
 
 /* --- ব্লককোট (দর্শন) --- */
 blockquote {
@@ -226,8 +313,8 @@ blockquote {
     padding: 1.5rem;
     margin: 1.5rem 0;
     font-style: italic;
-    color: #555;
-    background-color: #f9f9f9;
+    color: var(--text-color);
+    background-color: #0d1117;
     border-radius: 0 8px 8px 0;
     font-size: 1.1rem;
     font-weight: 400;
@@ -235,7 +322,7 @@ blockquote {
 
 /* --- ব্লগ পেজ --- */
 .blog-post {
-    border-bottom: 1px solid #ddd;
+    border-bottom: 1px solid var(--border-color);
     padding-bottom: 1.5rem;
     margin-bottom: 1.5rem;
 }
@@ -247,13 +334,14 @@ blockquote {
 }
 .blog-post .meta {
     font-size: 0.9rem;
-    color: #777;
+    color: #8b949e; /* GitHub-এর সেকেন্ডারি টেক্সট কালার */
     margin-bottom: 1rem;
 }
 .blog-post-content {
-    white-space: pre-wrap; /* ফেসবুকের মতো লাইন ব্রেক দেখানোর জন্য */
-    font-family: 'Hind Siliguri', sans-serif; /* বাংলা লেখার জন্য সুন্দর ফন্ট */
+    white-space: pre-wrap;
+    font-family: 'Hind Siliguri', sans-serif;
     font-size: 1.05rem;
+    color: var(--text-color);
 }
 .blog-post-content p {
     margin-bottom: 1rem;
@@ -263,34 +351,8 @@ blockquote {
 footer {
     text-align: center;
     padding: 3rem 1rem;
-    color: #888;
+    color: #8b949e;
     font-size: 0.95rem;
     margin-top: 2rem;
-}
-
-/* --- রেসপন্সিভ ডিজাইন (মোবাইলের জন্য) --- */
-@media (max-width: 768px) {
-    .container {
-        padding: 0 15px;
-    }
-    .card {
-        padding: 1.5rem;
-    }
-    .header-nav {
-        padding: 2rem 1rem;
-    }
-    .header-nav h1 {
-        font-size: 2rem;
-    }
-    .tagline {
-        font-size: 1.1rem;
-        height: 60px; /* মোবাইলে দুই লাইনে টাইপিং হতে পারে */
-    }
-    nav a {
-        padding: 8px 15px;
-        margin: 5px 3px;
-    }
-    .social-links {
-        grid-template-columns: 1fr; /* মোবাইল কন্টাক্ট বাটনগুলো ফুল-উইডথ হবে */
-    }
+    border-top: 1px solid var(--border-color);
 }
