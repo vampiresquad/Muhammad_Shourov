@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="bn"> <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Muhammad Shourov - Technical Write-ups</title>
+    <meta name="description" content="Technical write-ups, tutorials, and security research by Muhammad Shourov (Vampire).">
+    <meta name="keywords" content="Muhammad Shourov, Vampire, Writeup, Tutorial, Ethical Hacking, Security, Termux">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header class="header-nav">
+        <img src="vampire.jpg" alt="Muhammad Shourov" class="profile-pic">
+        <h1>Muhammad Shourov (Vampire)</h1>
+        <p>Ethical Hacker | Open Source Developer ✍️</p>
+        
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="blog.html">My Writings</a>
+            <a href="writeups.html" class="active">Write-ups</a> </nav>
+    </header>
+
+    <main class="container">
+        
+        <section class="card stagger" style="--order: 1">
+            <h2>Technical Write-ups & Tutorials</h2>
+            <p>এখানে আমার প্রযুক্তিগত লেখা, হ্যাকিং টিউটোরিয়াল এবং বিভিন্ন প্রজেক্টের ব্যাপারে বিস্তারিত আলোচনা করা হয়। লেখাগুলো সরাসরি GitHub Issues থেকে লোড করা হয়।</p>
+            
+            <div id="writeup-container">
+                <div id="writeup-loader" style="text-align: center; font-size: 1.2rem; color: var(--primary-color);">
+                    লেখাগুলো লোড হচ্ছে...
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>&copy; 2025 - All Rights Reserved by Muhammad Shourov (Vampire).</p>
+    </footer>
+
+    <a href="#" class="back-to-top">▲</a>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/showdown/2.1.0/showdown.min.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            
+            // --- GitHub Issues as CMS (Write-ups) ---
+            const container = document.getElementById('writeup-container');
+            const loader = document.getElementById('writeup-loader');
+            const username = 'vampiresquad';
+            const repo = 'Muhammad_Shourov';
+            const label = 'writeup'; // নতুন লেবেল
+
+            // Markdown কনভার্টার চালু করা
+            const converter = new showdown.Converter();
+
+            async function fetchWriteups() {
+                try {
+                    // 'writeup' লেবেল দিয়ে API কল করা হচ্ছে
+                    const response = await fetch(`https://api.github.com/repos/${username}/${repo}/issues?labels=${label}&state=open&sort=created&direction=desc`);
+                    if (!response.ok) throw new Error(`GitHub API Error: ${response.status}`);
+                    
+                    const issues = await response.json();
+
+                    if (loader) loader.style.display = 'none'; // লোডার হাইড করুন
+
+                    if (issues.length === 0) {
+                        container.innerHTML = '<p>এখনো কোনো টেকনিক্যাল লেখা পোস্ট করা হয়নি। দয়া করে GitHub Issues-এ গিয়ে `writeup` লেবেলসহ একটি Issue তৈরি করুন।</p>';
+                        return;
+                    }
+
+                    issues.forEach(issue => {
+                        const postHTML = converter.makeHtml(issue.body); // Markdown কে HTML-এ রূপান্তর
+                        const postDate = new Date(issue.created_at).toLocaleDateString('bn-BD', {
+                            year: 'numeric', month: 'long', day: 'numeric'
+                        });
+
+                        const postCard = `
+                            <article class="card blog-post" style="opacity:1; transform:none; animation:none;">
+                                <h3>${issue.title}</h3>
+                                <p class="meta">প্রকাশিত: ${postDate}</p>
+                                <div class="blog-post-content">
+                                    ${postHTML}
+                                </div>
+                                <a href="${issue.html_url}" target="_blank" class="btn" style="background: #333; color: white; margin-top: 1rem;">
+                                    মন্তব্য করুন বা GitHub-এ দেখুন
+                                </a>
+                            </article>
+                        `;
+                        container.innerHTML += postCard;
+                    });
+
+                } catch (error) {
+                    console.error('Error fetching write-ups:', error);
+                    if (loader) loader.innerText = 'লেখাগুলো লোড করা সম্ভব হয়নি।';
+                }
+            }
+
+            fetchWriteups();
+
+            // --- Back to Top বাটন JS ---
+            const backToTopButton = document.querySelector('.back-to-top');
+            if(backToTopButton) {
+                window.addEventListener('scroll', () => {
+                    if (window.scrollY > 300) {
+                        backToTopButton.classList.add('show');
+                    } else {
+                        backToTopButton.classList.remove('show');
+                    }
+                });
+            }
+        });
+    </script>
+
+</body>
+</html>
