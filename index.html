@@ -9,6 +9,8 @@
     <meta name="keywords" content="Muhammad Shourov, Vampire, Ethical Hacker, Cyber Security, Vampire Squad, Bangladesh, Mymensingh, Shourov Hacker">
 
     <link rel="stylesheet" href="style.css">
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jquery.terminal/css/jquery.terminal.min.css">
 </head>
 <body>
 
@@ -18,9 +20,13 @@
         <div class="tagline">
             <span id="typing-effect"></span>
         </div>
+        
         <nav>
             <a href="index.html" class="active">Home</a>
-            <a href="blog.html">My Writings (Blog)</a>
+            <a href="services.html">Services</a>
+            <a href="utils.html">Tools</a>
+            <a href="writeups.html">Write-ups</a>
+            <a href="blog.html">My Writings</a>
         </nav>
     </header>
 
@@ -30,31 +36,32 @@
             <h2>About Me 🌿</h2>
             <p>A unique and curious creation of the Creator. Possessor of multiple talents, I find solace in solitude and often converse with nature.</p>
             <p>I am driven by a passion to help others, ensuring I cause no harm in the process. Literature is a core part of my soul; writing is how I breathe. ✍️</p>
-            <p><strong>In my own words:</strong> "I am a person you will not find a second time on this earth."</p>
-            
-            </section>
+        </section>
 
-        <section class="card stagger" style="--order: 2">
-            <h2>Professional Services 🛡️</h2>
-            <p>As an Ethical Hacker and founder of Vampire Squad, I offer specialized services to enhance digital security and awareness.</p>
-            <div class="service-list">
-                <div class="service-item">
-                    <h3>Cyber Security Consultation</h3>
-                    <p>Get expert analysis and robust strategies to protect your digital infrastructure. From vulnerability assessments to penetration testing, I provide comprehensive solutions to secure your online presence.</p>
-                    <a href="mailto:vampiresquad.org@gmail.com?subject=Cyber%20Security%20Consultation%20Inquiry" class="btn">Request a Consultation</a>
-                </div>
-                <div class="service-item">
-                    <h3>Facebook Page/Profile Security</h3>
-                    <p>Secure your social identity. I offer specialized services to audit, secure, and recover Facebook profiles and pages from malicious attacks, ensuring your digital footprint remains yours.</p>
-                </div>
-                <div class="service-item">
-                    <h3>Digital Awareness Programs</h3>
-                    <p>Knowledge is the best defense. I conduct workshops and create content aimed at educating individuals about online safety, ethical hacking principles, and proactive measures to fight digital crime.</p>
-                </div>
-            </div>
+        <section class="card stagger terminal-card" style="--order: 2">
+            <h2>Hacker Terminal </h2>
+            <p style="padding: 0 2.5rem 1.5rem;">Welcome to my terminal. Type 'help' to see all available commands.</p>
+            <div id="hacker-terminal"></div>
         </section>
 
         <section class="card stagger" style="--order: 3">
+            <h2>Professional Services 🛡️</h2>
+            <p>I offer specialized services to enhance digital security. Below is a summary. Click the button for full details and FAQ.</p>
+            <div class="service-list">
+                <div class="service-item">
+                    <h3>Cyber Security Consultation</h3>
+                </div>
+                <div class="service-item">
+                    <h3>Facebook Page/Profile Security</h3>
+                </div>
+                <div class="service-item">
+                    <h3>Digital Awareness Programs</h3>
+                </div>
+            </div>
+            <a href="services.html" class="btn">View All Services</a>
+        </section>
+
+        <section class="card stagger" style="--order: 4">
             <h2>My Ethical Hacking Tools 💻</h2>
             <p>Here are some of my open-source tools, loaded directly from my GitHub profile. Sorted by Stars (⭐).</p>
             <div class="tools-grid" id="tools-grid">
@@ -62,7 +69,7 @@
             </div>
         </section>
 
-        <section class="card stagger" style="--order: 4">
+        <section class="card stagger" style="--order: 5">
             <h2>Work Experience 💼</h2>
             <div class="timeline">
                 <div class="timeline-item">
@@ -80,7 +87,7 @@
             </div>
         </section>
         
-        <section class="card stagger" style="--order: 5">
+        <section class="card stagger" style="--order: 6">
             <h2>Personal Information 🌙</h2>
             <ul class="info-list">
                 <li><strong>Full Name (English):</strong> Muhammad Shourov</li>
@@ -92,7 +99,7 @@
             </ul>
         </section>
 
-        <section class="card stagger" style="--order: 6">
+        <section class="card stagger" style="--order: 7">
             <h2>Talents & Interests 🧠</h2>
             <ul class="info-list">
                 <li>Singing 🎵</li>
@@ -103,7 +110,7 @@
             </ul>
         </section>
 
-        <section class="card stagger" style="--order: 7">
+        <section class="card stagger" style="--order: 8">
             <h2>Education 📘</h2>
             <ul class="info-list">
                 <li><strong>PSC Result:</strong> 2.83</li>
@@ -112,13 +119,13 @@
             </ul>
         </section>
 
-        <section class="card stagger" style="--order: 8">
+        <section class="card stagger" style="--order: 9">
             <h2>Philosophy of Life 🖤</h2>
             <blockquote>“Nothing is Easy in this world without Religious work.”</blockquote>
             <blockquote>“Brotherhood is built with respect, trust, and sacrifice — not by name or fame.”</blockquote>
         </section>
 
-        <section class="card stagger" style="--order: 9">
+        <section class="card stagger" style="--order: 10">
             <h2>Get in Touch 📱</h2>
             <p>Have a question or want to work together? Send me a message using the form below, or connect via social media.</p>
             
@@ -159,13 +166,130 @@
 
     <a href="#" class="back-to-top">▲</a>
 
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery.terminal/js/jquery.terminal.min.js"></script>
     <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
 
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            
+        $(document).ready(function() {
+            // --- হ্যাকার টার্মিনাল সেটআপ ---
+            $('#hacker-terminal').terminal(function(command, term) {
+                // কমান্ডগুলো এখানে ডিফাইন করা হয়েছে
+                const commands = {
+                    'help': function() {
+                        term.echo(
+                            'Available commands:\n' +
+                            '  [[;aqua;]whoami]         - Shows who I am\n' +
+                            '  [[;aqua;]services]       - Lists all my professional services\n' +
+                            '  [[;aqua;]tools]          - Shows my top GitHub tools\n' +
+                            '  [[;aqua;]skills]         - Lists my talents and interests\n' +
+                            '  [[;aqua;]contact]        - Shows my social media and contact links\n' +
+                            '  [[;aqua;]philosophy]     - Prints my philosophy of life\n' +
+                            '  [[;aqua;]clear]          - Clears the terminal screen\n' +
+                            '  [[;aqua;]goto <section>]  - Scrolls to a page section (e.g., goto tools)\n'
+                        );
+                    },
+                    'whoami': function() {
+                        term.echo('Muhammad Shourov (Vampire)\nEthical Hacker 🕶️ | Founder of Vampire Squad');
+                    },
+                    'services': function() {
+                        term.echo(
+                            'My Professional Services:\n' +
+                            '1. [[;yellow;]Cyber Security Consultation]\n' +
+                            '2. [[;yellow;]Facebook Page/Profile Security]\n' +
+                            '3. [[;yellow;]Digital Awareness Programs]\n' +
+                            'Type \'goto services\' or click the "Services" tab for details.'
+                        );
+                    },
+                    'tools': function() {
+                        term.echo(
+                            'Loading my top GitHub tools...\n' +
+                            'Note: This is a static list. For a live, updated list, see the "My Ethical Hacking Tools" section below.\n\n' +
+                            '1. [[;yellow;]Vampire-API-Finder]\n' +
+                            '2. [[;yellow;]Vampire-FB-Grow-X]\n' +
+                            '3. [[;yellow;]Vampire-Call-Bomber-Advanced]\n' +
+                            '4. [[;yellow;]Vampire-Hub-XX]\n' +
+                            '5. [[;yellow;]vampire-terminal]\n'
+                        );
+                        term.echo('Type \'goto tools\' to see all tools.');
+                    },
+                    'skills': function() {
+                        term.echo(
+                            'Talents & Interests:\n' +
+                            '- Singing 🎵\n' +
+                            '- Reading Books 📖\n' +
+                            '- Writing Stories, Poems, Novels ✍️\n' +
+                            '- Hacking and Technology 💻\n'
+                        );
+                    },
+                    'contact': function() {
+                        term.echo(
+                            'Get in Touch:\n' +
+                            '  [[;yellow;]Email:]     mailto:vampiresquad.org@gmail.com\n' +
+                            '  [[;yellow;]Facebook:]  https://www.facebook.com/the.devastated.writer\n' +
+                            '  [[;yellow;]GitHub:]    https://github.com/vampiresquad\n' +
+                            '  [[;yellow;]Telegram:]  https://t.me/Vampire_Squad\n\n' +
+                            'Type \'goto contact\' to use the contact form.'
+                        );
+                    },
+                    'philosophy': function() {
+                        term.echo(
+                            '“Nothing is Easy in this world without Religious work.”\n' +
+                            '“Brotherhood is built with respect, trust, and sacrifice — not by name or fame.”'
+                        );
+                    },
+                    'clear': function() {
+                        term.clear();
+                    },
+                    'goto': function(section) {
+                        let target;
+                        if (!section) {
+                            term.error('Usage: goto <section_name>\nExample: goto tools');
+                            return;
+                        }
+                        if (section.includes('service')) target = $('h2:contains("Professional Services")');
+                        else if (section.includes('tool')) target = $('h2:contains("My Ethical Hacking Tools")');
+                        else if (section.includes('contact')) target = $('h2:contains("Get in Touch")');
+                        else if (section.includes('about')) target = $('h2:contains("About Me")');
+                        else {
+                            term.error('Unknown section: ' + section);
+                            return;
+                        }
+
+                        if (target.length) {
+                            term.echo('Scrolling to ' + section + '...');
+                            $('html, body').animate({
+                                scrollTop: target.offset().top - 100
+                            }, 1000);
+                        }
+                    }
+                };
+
+                // কমান্ড হ্যান্ডলার
+                const parts = command.split(' ');
+                const cmd = parts[0];
+                const args = parts.slice(1);
+                
+                if (cmd in commands) {
+                    commands[cmd].apply(term, args);
+                } else if (command.trim() !== '') {
+                    term.error('Unknown command: ' + command + '\nType "help" to see the list of commands.');
+                }
+            }, {
+                greetings: 'Welcome to Vampire Squad Terminal v1.0\nType [[;aqua;]help] to get started.',
+                prompt: '[[;green;]vampire@shourov]~$ ',
+                clear: false,
+                checkArity: false,
+                history: true,
+                keymap: {
+                    'CTRL+C': function(e, original) {
+                        term.echo('Command interrupted.');
+                    }
+                }
+            });
+
             // --- টাইপিং ইফেক্ট ---
-            var typed = new Typed('#typing-effect', {
+            new Typed('#typing-effect', {
                 strings: [
                     'Ethical Hacker 🕶️',
                     'Founder of Vampire Squad',
@@ -178,8 +302,8 @@
             });
 
             // --- GitHub API থেকে টুলস লোড করা ---
-            const toolsGrid = document.getElementById('tools-grid');
-            const loader = document.getElementById('loader');
+            const toolsGrid = $('#tools-grid');
+            const loader = $('#loader');
             const username = 'vampiresquad';
             const excludeRepos = ['vampiresquad.github.io', 'Muhammad_Shourov', 'vampiresquad'];
 
@@ -193,7 +317,7 @@
                         .filter(repo => !repo.fork && !excludeRepos.includes(repo.name))
                         .sort((a, b) => b.stargazers_count - a.stargazers_count);
 
-                    loader.style.display = 'none';
+                    loader.hide();
 
                     filteredRepos.forEach(repo => {
                         const toolCard = `
@@ -207,172 +331,52 @@
                                 <a href="${repo.html_url}" target="_blank" class="btn-github">View on GitHub</a>
                             </div>
                         `;
-                        toolsGrid.innerHTML += toolCard;
+                        toolsGrid.append(toolCard);
                     });
                 } catch (error) {
                     console.error('Error fetching GitHub repos:', error);
-                    loader.innerText = 'Failed to load GitHub projects.';
+                    loader.text('Failed to load GitHub projects.');
                 }
             }
-            if(toolsGrid) fetchGitHubTools();
+            if (toolsGrid.length) fetchGitHubTools();
 
             // --- Formspree কন্টাক্ট ফর্ম ---
-            const form = document.getElementById('contact-form');
-            const status = document.getElementById('form-status');
+            const form = $('#contact-form');
+            const status = $('#form-status');
 
             async function handleSubmit(event) {
                 event.preventDefault();
                 const data = new FormData(event.target);
                 try {
                     const response = await fetch(event.target.action, {
-                        method: form.method,
+                        method: form.prop('method'),
                         body: data,
                         headers: { 'Accept': 'application/json' }
                     });
                     if (response.ok) {
-                        status.innerText = "Thanks for your message! I'll get back to you soon.";
-                        status.style.color = "var(--primary-color)";
-                        form.reset();
+                        status.text("Thanks for your message! I'll get back to you soon.").css('color', 'var(--primary-color)');
+                        form[0].reset();
                     } else {
                         const responseData = await response.json();
-                        status.innerText = responseData.errors ? responseData.errors.map(error => error.message).join(", ") : "Oops! There was a problem.";
-                        status.style.color = "#E4405F";
+                        status.text(responseData.errors ? responseData.errors.map(error => error.message).join(", ") : "Oops! There was a problem.").css('color', '#E4405F');
                     }
                 } catch (error) {
-                    status.innerText = "Oops! There was a problem submitting your form.";
-                    status.style.color = "#E4405F";
+                    status.text("Oops! There was a problem submitting your form.").css('color', '#E4405F');
                 }
             }
-            if(form) form.addEventListener("submit", handleSubmit);
+            if (form.length) form.on("submit", handleSubmit);
 
-            // --- আপগ্রেড: Back to Top বাটন JS ---
-            const backToTopButton = document.querySelector('.back-to-top');
-            if(backToTopButton) {
-                window.addEventListener('scroll', () => {
-                    if (window.scrollY > 300) {
-                        backToTopButton.classList.add('show');
+            // --- Back to Top বাটন JS ---
+            const backToTopButton = $('.back-to-top');
+            if (backToTopButton.length) {
+                $(window).on('scroll', () => {
+                    if ($(window).scrollTop() > 300) {
+                        backToTopButton.addClass('show');
                     } else {
-                        backToTopButton.classList.remove('show');
+                        backToTopButton.removeClass('show');
                     }
                 });
             }
-        });
-    </script>
-
-</body>
-</html>
-
-    </main>
-
-    <footer>
-        <p>&copy; 2025 - All Rights Reserved.</p>
-    </footer>
-
-    <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
-    <script>
-        var typed = new Typed('#typing-effect', {
-            strings: [
-                'Ethical Hacker 🕶️',
-                'Founder of Vampire Squad',
-                'Cyber Security Consultant',
-                'Open Source Developer',
-                '“I love to write” (Writer)'
-            ],
-            typeSpeed: 70,
-            backSpeed: 40,
-            loop: true,
-            showCursor: true,
-            cursorChar: '█',
-            smartBackspace: true
-        });
-    </script>
-
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            
-            // --- আপগ্রেড ১: GitHub API থেকে টুলস লোড করা ---
-            const toolsGrid = document.getElementById('tools-grid');
-            const loader = document.getElementById('loader');
-            const username = 'vampiresquad';
-            // যে রিপোগুলো দেখানো হবে না
-            const excludeRepos = ['vampiresquad.github.io', 'Muhammad_Shourov', 'vampiresquad'];
-
-            async function fetchGitHubTools() {
-                try {
-                    const response = await fetch(`https://api.github.com/users/${username}/repos?sort=updated`);
-                    if (!response.ok) {
-                        throw new Error(`GitHub API Error: ${response.status}`);
-                    }
-                    const repos = await response.json();
-
-                    // রিপোগুলো ফিল্টার এবং সর্ট করা
-                    const filteredRepos = repos
-                        .filter(repo => !repo.fork && !excludeRepos.includes(repo.name)) // ফর্ক এবং বাদ দেওয়া রিপো বাদ দিন
-                        .sort((a, b) => b.stargazers_count - a.stargazers_count); // স্টার (⭐) অনুযায়ী সর্ট করুন
-
-                    // লোডার সরিয়ে দিন
-                    loader.style.display = 'none';
-
-                    // প্রতিটি রিপোর জন্য কার্ড তৈরি করুন
-                    filteredRepos.forEach(repo => {
-                        const toolCard = `
-                            <div class="tool-card">
-                                <h3>${repo.name}</h3>
-                                <p>${repo.description || 'No description provided.'}</p>
-                                <div class="tool-stats">
-                                    <div class="stat-item">⭐ <span>${repo.stargazers_count} Stars</span></div>
-                                    <div class="stat-item">🍴 <span>${repo.forks_count} Forks</span></div>
-                                </div>
-                                <a href="${repo.html_url}" target="_blank" class="btn-github">View on GitHub</a>
-                            </div>
-                        `;
-                        toolsGrid.innerHTML += toolCard;
-                    });
-
-                } catch (error) {
-                    console.error('Error fetching GitHub repos:', error);
-                    loader.innerText = 'Failed to load GitHub projects. Please check the console.';
-                }
-            }
-            
-            // টুলস লোড করা শুরু করুন
-            fetchGitHubTools();
-
-            // --- আপগ্রেড ২: Formspree কন্টাক্ট ফর্ম হ্যান্ডলিং ---
-            const form = document.getElementById('contact-form');
-            const status = document.getElementById('form-status');
-
-            async function handleSubmit(event) {
-                event.preventDefault();
-                const data = new FormData(event.target);
-                try {
-                    const response = await fetch(event.target.action, {
-                        method: form.method,
-                        body: data,
-                        headers: {
-                            'Accept': 'application/json'
-                        }
-                    });
-                    if (response.ok) {
-                        status.innerText = "Thanks for your message! I'll get back to you soon.";
-                        status.style.color = "var(--primary-color)";
-                        form.reset();
-                    } else {
-                        const responseData = await response.json();
-                        if (responseData.hasOwnProperty('errors')) {
-                            status.innerText = responseData.errors.map(error => error.message).join(", ");
-                        } else {
-                            status.innerText = "Oops! There was a problem submitting your form.";
-                        }
-                        status.style.color = "#E4405F"; // Red color for error
-                    }
-                } catch (error) {
-                    status.innerText = "Oops! There was a problem submitting your form.";
-                    status.style.color = "#E4405F";
-                }
-            }
-            
-            form.addEventListener("submit", handleSubmit);
         });
     </script>
 
