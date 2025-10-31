@@ -19,7 +19,9 @@
         
         <nav>
             <a href="index.html">Home</a>
-            <a href="services.html" class="active">Services</a> <a href="writeups.html">Write-ups</a>
+            <a href="services.html" class="active">Services</a>
+            <a href="utils.html">Tools</a>
+            <a href="writeups.html">Write-ups</a>
             <a href="blog.html">My Writings</a>
         </nav>
     </header>
@@ -130,10 +132,6 @@
             faqItems.forEach(item => {
                 const question = item.querySelector('.faq-question');
                 question.addEventListener('click', () => {
-                    // প্রথমে সব আইটেম বন্ধ করুন (যদি আপনি চান একবারে শুধু একটি খোলা থাকবে)
-                    // faqItems.forEach(i => i.classList.remove('active'));
-                    
-                    // অথবা শুধু বর্তমান আইটেমটি টগল করুন
                     item.classList.toggle('active');
                 });
             });
