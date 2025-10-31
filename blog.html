@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="bn"> <head>
+<html lang="bn">
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
@@ -15,9 +16,13 @@
         <img src="vampire.jpg" alt="Muhammad Shourov" class="profile-pic">
         <h1>Muhammad Shourov (Vampire)</h1>
         <p>"লিখতে ভালোবাসি" (সাহিত্যিক) ✍️</p>
+        
         <nav>
             <a href="index.html">Home</a>
-            <a href="blog.html" class="active">My Writings (Blog)</a>
+            <a href="services.html">Services</a>
+            <a href="utils.html">Tools</a>
+            <a href="writeups.html">Write-ups</a>
+            <a href="blog.html" class="active">My Writings</a>
         </nav>
     </header>
 
@@ -28,9 +33,7 @@
             <p>লিখতে বড্ড ভালোবাসি আমি! কেমন অদ্ভুত লিখি, প্রত্যেক'টি লিখা পরবর্তী'তে অধিকাংশ'ই ব্যাক্তি_সৃষ্ট উপন্যাসে স্থান দখল করে ফেলে। আমার ক্ষুদ্র মস্তিষ্কের প্রচেষ্টায় সৃষ্ট কিছু গল্প নিচে উল্লেখ করা হলো।</p>
             
             <div id="blog-container">
-                <div id="blog-loader" style="text-align: center; font-size: 1.2rem; color: var(--primary-color);">
-                    লেখাগুলো লোড হচ্ছে...
-                </div>
+                <div id="blog-loader">লেখাগুলো লোড হচ্ছে...</div>
             </div>
         </section>
 
@@ -52,7 +55,7 @@
             const loader = document.getElementById('blog-loader');
             const username = 'vampiresquad';
             const repo = 'Muhammad_Shourov';
-            const label = 'blog'; // নিশ্চিত করুন এই নামের লেবেলটি তৈরি করেছেন
+            const label = 'blog'; // 'blog' লেবেল
 
             // Markdown কনভার্টার চালু করা
             const converter = new showdown.Converter();
@@ -64,7 +67,7 @@
                     
                     const issues = await response.json();
 
-                    loader.style.display = 'none'; // লোডার হাইড করুন
+                    if(loader) loader.style.display = 'none';
 
                     if (issues.length === 0) {
                         blogContainer.innerHTML = '<p>এখনো কোনো লেখা পোস্ট করা হয়নি। দয়া করে GitHub Issues-এ গিয়ে `blog` লেবেলসহ একটি Issue তৈরি করুন।</p>';
@@ -72,7 +75,7 @@
                     }
 
                     issues.forEach(issue => {
-                        const postHTML = converter.makeHtml(issue.body); // Markdown কে HTML-এ রূপান্তর
+                        const postHTML = converter.makeHtml(issue.body);
                         const postDate = new Date(issue.created_at).toLocaleDateString('bn-BD', {
                             year: 'numeric', month: 'long', day: 'numeric'
                         });
@@ -94,7 +97,7 @@
 
                 } catch (error) {
                     console.error('Error fetching blog posts:', error);
-                    loader.innerText = 'লেখাগুলো লোড করা সম্ভব হয়নি।';
+                    if(loader) loader.innerText = 'লেখাগুলো লোড করা সম্ভব হয়নি।';
                 }
             }
 
