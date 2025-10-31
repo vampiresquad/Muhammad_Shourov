@@ -1,7 +1,7 @@
 /* --- গুগল ফন্ট ইম্পোর্ট --- */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Hind+Siliguri:wght@400;600&display=swap');
 
-/* --- রুট ভেরিয়েবল (নতুন ডার্ক থিম) --- */
+/* --- রুট ভেরিয়েবল (ডার্ক থিম) --- */
 :root {
     --primary-color: #00f2ea; /* একটি উজ্জ্বল সায়ান অ্যাকসেন্ট */
     --secondary-color: #00c4ff;
@@ -22,11 +22,11 @@
 }
 
 html {
-    scroll-behavior: smooth; /* স্মুথ স্ক্রল */
+    scroll-behavior: smooth;
 }
 
 body {
-    font-family: 'Poppins', 'Hind Siliguri', sans-serif;
+    font-family: 'Poppins', 'Hind+Siliguri', sans-serif;
     background-color: var(--background-color);
     color: var(--text-color);
     line-height: 1.7;
@@ -111,7 +111,7 @@ nav a {
 
 nav a:hover, nav a.active {
     background-color: var(--primary-color);
-    color: #0d1117; /* হোভারে টেক্সট ডার্ক হবে */
+    color: #0d1117;
     border-color: var(--primary-color);
     transform: translateY(-2px);
 }
@@ -135,8 +135,6 @@ nav a:hover, nav a.active {
         transform: translateY(0);
     }
 }
-/* কার্ড লোড অ্যানিমেশন ডিলে */
-.card { animation-delay: 0.1s; }
 .card.stagger { animation-delay: calc(var(--order) * 0.1s); }
 
 
@@ -172,7 +170,7 @@ nav a:hover, nav a.active {
 .service-item {
     margin-bottom: 1.5rem;
     padding: 1.5rem;
-    background: #0d1117; /* কার্ডের ভেতরে আরেকটু ডার্ক */
+    background: #0d1117;
     border-radius: 8px;
     border: 1px solid var(--border-color);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -195,6 +193,8 @@ nav a:hover, nav a.active {
     font-weight: 700;
     margin-top: 1rem;
     transition: all 0.3s ease;
+    border: none;
+    cursor: pointer;
 }
 .btn:hover {
     background-color: var(--secondary-color);
@@ -211,7 +211,7 @@ nav a:hover, nav a.active {
     position: relative;
     margin-bottom: 2rem;
 }
-.timeline-item::before { /* টাইমলাইন ডট */
+.timeline-item::before {
     content: '';
     position: absolute;
     left: -2.3rem;
@@ -233,7 +233,7 @@ nav a:hover, nav a.active {
     margin-bottom: 0.5rem;
 }
 
-/* --- হ্যাকিং টুলস গ্রিড --- */
+/* --- হ্যাকিং টুলস গ্রিড (নতুন স্টাইল সহ) --- */
 .tools-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -259,8 +259,22 @@ nav a:hover, nav a.active {
 }
 .tool-card p {
     font-size: 0.95rem;
-    flex-grow: 1; /* বর্ণনাকে জায়গা দেয় */
+    flex-grow: 1;
     margin-bottom: 1rem;
+}
+/* --- গিটহাব স্ট্যাটাস --- */
+.tool-stats {
+    display: flex;
+    gap: 1rem;
+    font-size: 0.9rem;
+    color: var(--text-color);
+    margin-bottom: 1.2rem;
+}
+.stat-item {
+    font-weight: 600;
+}
+.stat-item span {
+    color: var(--secondary-color);
 }
 .tool-card .btn-github {
     background-color: #24292e;
@@ -274,6 +288,45 @@ nav a:hover, nav a.active {
 }
 .tool-card .btn-github:hover {
     background-color: #333;
+}
+/* --- লোডিং স্পিনার --- */
+#loader {
+    text-align: center;
+    font-size: 1.2rem;
+    color: var(--primary-color);
+}
+
+/* --- কন্টাক্ট ফর্ম স্টাইল --- */
+.form-group {
+    margin-bottom: 1.5rem;
+}
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    color: var(--text-color);
+}
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 12px 15px;
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+    background-color: #0d1117;
+    color: var(--text-color);
+    font-family: 'Poppins', sans-serif;
+    font-size: 1rem;
+}
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 10px rgba(0, 242, 234, 0.2);
+}
+/* ফর্ম স্ট্যাটাস মেসেজ */
+#form-status {
+    margin-top: 1rem;
+    font-weight: 600;
 }
 
 /* --- সোশ্যাল লিংক বাটন --- */
@@ -298,7 +351,6 @@ nav a:hover, nav a.active {
     box-shadow: 0 5px 15px rgba(0,0,0,0.1);
 }
 
-/* বাটন কালার */
 .link-github { background-color: #333; }
 .link-facebook { background-color: #1877F2; }
 .link-messenger { background-color: #00B2FF; }
@@ -334,7 +386,7 @@ blockquote {
 }
 .blog-post .meta {
     font-size: 0.9rem;
-    color: #8b949e; /* GitHub-এর সেকেন্ডারি টেক্সট কালার */
+    color: #8b949e;
     margin-bottom: 1rem;
 }
 .blog-post-content {
