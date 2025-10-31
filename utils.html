@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Muhammad Shourov - Live Hacking Utilities</title>
+    <meta name="description" content="Live online utilities for ethical hacking and development. Includes Hash Generator, Base64 Encoder/Decoder, and Password Generator.">
+    <meta name="keywords" content="Hash Generator, Base64 Encoder, Password Generator, Online Tools, Utilities">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header class="header-nav">
+        <img src="vampire.jpg" alt="Muhammad Shourov" class="profile-pic">
+        <h1>Muhammad Shourov (Vampire)</h1>
+        <p>Live Utilities | Developer</p>
+        
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="services.html">Services</a>
+            <a href="utils.html" class="active">Tools</a> <a href="writeups.html">Write-ups</a>
+            <a href="blog.html">My Writings</a>
+        </nav>
+    </header>
+
+    <main class="container">
+        
+        <section class="card stagger" style="--order: 1">
+            <h2>Live Hacking Utilities</h2>
+            <p>Welcome to my live tools page. These are simple, client-side (JavaScript-based) utilities for common development and security tasks. Your data is not sent to any server.</p>
+        </section>
+
+        <section class="card stagger" style="--order: 2">
+            <h2>Hash Generator (MD5, SHA-1, SHA-256)</h2>
+            <div class="tool-container">
+                <div class="tool-group">
+                    <label for="hash-input">Input Text:</label>
+                    <textarea id="hash-input" rows="4"></textarea>
+                </div>
+                <button id="hash-generate-btn" class="btn">Generate Hashes</button>
+                
+                <hr style="border-color: var(--border-color); margin: 1.5rem 0;">
+                
+                <div class="tool-group">
+                    <label for="hash-output-md5">MD5:</label>
+                    <input type="text" id="hash-output-md5" readonly>
+                </div>
+                <div class="tool-group">
+                    <label for="hash-output-sha1">SHA-1:</label>
+                    <input type="text" id="hash-output-sha1" readonly>
+                </div>
+                <div class="tool-group">
+                    <label for="hash-output-sha256">SHA-256:</label>
+                    <input type="text" id="hash-output-sha256" readonly>
+                </div>
+            </div>
+        </section>
+        
+        <section class="card stagger" style="--order: 3">
+            <h2>Base64 Encoder / Decoder</h2>
+            <div class="tool-container">
+                <div class="tool-group">
+                    <label for="base64-input">Input (Plain Text or Base64):</label>
+                    <textarea id="base64-input" rows="5"></textarea>
+                </div>
+                <div class="tool-group">
+                    <button id="base64-encode-btn" class="btn btn-inline">Encode</button>
+                    <button id="base64-decode-btn" class="btn btn-inline" style="background: var(--secondary-color);">Decode</button>
+                </div>
+                <div class="tool-group">
+                    <label for="base64-output">Output:</label>
+                    <div id="base64-output" class="output-box"></div>
+                </div>
+            </div>
+        </section>
+        
+        <section class="card stagger" style="--order: 4">
+            <h2>Secure Password Generator</h2>
+            <div class="tool-container">
+                <div class="tool-group">
+                    <label for="pass-output">Generated Password:</label>
+                    <input type="text" id="pass-output" readonly>
+                </div>
+                <div class="tool-options">
+                    <label for="pass-length">Length: </label>
+                    <input type="number" id="pass-length" value="16" min="8" max="128" style="width: 80px;">
+                    <label><input type="checkbox" id="pass-upper" checked> ABC</label>
+                    <label><input type="checkbox" id="pass-lower" checked> abc</label>
+                    <label><input type="checkbox" id="pass-nums" checked> 123</label>
+                    <label><input type="checkbox" id="pass-syms" checked> #?!</label>
+                </div>
+                <button id="pass-generate-btn" class="btn">Generate New Password</button>
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>&copy; 2025 - All Rights Reserved by Muhammad Shourov (Vampire).</p>
+    </footer>
+
+    <a href="#" class="back-to-top">▲</a>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.2.0/crypto-js.min.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            
+            // --- টুল ১: Hash Generator ---
+            const hashInput = document.getElementById('hash-input');
+            const hashBtn = document.getElementById('hash-generate-btn');
+            if (hashBtn) {
+                hashBtn.addEventListener('click', () => {
+                    const input = hashInput.value;
+                    document.getElementById('hash-output-md5').value = CryptoJS.MD5(input).toString();
+                    document.getElementById('hash-output-sha1').value = CryptoJS.SHA1(input).toString();
+                    document.getElementById('hash-output-sha256').value = CryptoJS.SHA256(input).toString();
+                });
+            }
+
+            // --- টুল ২: Base64 Encoder/Decoder ---
+            const base64Input = document.getElementById('base64-input');
+            const base64Output = document.getElementById('base64-output');
+            const encodeBtn = document.getElementById('base64-encode-btn');
+            const decodeBtn = document.getElementById('base64-decode-btn');
+            
+            if (encodeBtn) {
+                encodeBtn.addEventListener('click', () => {
+                    try {
+                        base64Output.textContent = btoa(base64Input.value);
+                    } catch (e) {
+                        base64Output.textContent = 'Error: Invalid input for encoding.';
+                    }
+                });
+            }
+            if (decodeBtn) {
+                decodeBtn.addEventListener('click', () => {
+                    try {
+                        base64Output.textContent = atob(base64Input.value);
+                    } catch (e) {
+                        base64Output.textContent = 'Error: Invalid Base64 string.';
+                    }
+                });
+            }
+
+            // --- টুল ৩: Password Generator ---
+            const passOutput = document.getElementById('pass-output');
+            const passGenBtn = document.getElementById('pass-generate-btn');
+            
+            const chars = {
+                upper: 'ABCDEFGHIJKLMNOPQRSTUVWXYZ',
+                lower: 'abcdefghijklmnopqrstuvwxyz',
+                nums: '0123456789',
+                syms: '!@#$%^&*()_+-=[]{}|;:,.<>?'
+            };
+
+            function generatePassword() {
+                const length = document.getElementById('pass-length').value;
+                const useUpper = document.getElementById('pass-upper').checked;
+                const useLower = document.getElementById('pass-lower').checked;
+                const useNums = document.getElementById('pass-nums').checked;
+                const useSyms = document.getElementById('pass-syms').checked;
+
+                let charSet = '';
+                if (useUpper) charSet += chars.upper;
+                if (useLower) charSet += chars.lower;
+                if (useNums) charSet += chars.nums;
+                if (useSyms) charSet += chars.syms;
+
+                if (charSet === '') {
+                    passOutput.value = 'Please select at least one character set.';
+                    return;
+                }
+
+                let password = '';
+                for (let i = 0; i < length; i++) {
+                    const randomIndex = Math.floor(Math.random() * charSet.length);
+                    password += charSet[randomIndex];
+                }
+                passOutput.value = password;
+            }
+            if (passGenBtn) {
+                passGenBtn.addEventListener('click', generatePassword);
+                generatePassword(); // পেজ লোড হলেই প্রথমবার একটি পাসওয়ার্ড তৈরি করে রাখে
+            }
+
+            // --- Back to Top বাটন JS ---
+            const backToTopButton = document.querySelector('.back-to-top');
+            if(backToTopButton) {
+                window.addEventListener('scroll', () => {
+                    if (window.scrollY > 300) {
+                        backToTopButton.classList.add('show');
+                    } else {
+                        backToTopButton.classList.remove('show');
+                    }
+                });
+            }
+        });
+    </script>
+
+</body>
+</html>
