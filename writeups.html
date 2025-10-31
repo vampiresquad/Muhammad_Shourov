@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="bn"> <head>
+<html lang="bn">
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
@@ -18,8 +19,11 @@
         
         <nav>
             <a href="index.html">Home</a>
+            <a href="services.html">Services</a>
+            <a href="utils.html">Tools</a>
+            <a href="writeups.html" class="active">Write-ups</a>
             <a href="blog.html">My Writings</a>
-            <a href="writeups.html" class="active">Write-ups</a> </nav>
+        </nav>
     </header>
 
     <main class="container">
@@ -29,9 +33,7 @@
             <p>এখানে আমার প্রযুক্তিগত লেখা, হ্যাকিং টিউটোরিয়াল এবং বিভিন্ন প্রজেক্টের ব্যাপারে বিস্তারিত আলোচনা করা হয়। লেখাগুলো সরাসরি GitHub Issues থেকে লোড করা হয়।</p>
             
             <div id="writeup-container">
-                <div id="writeup-loader" style="text-align: center; font-size: 1.2rem; color: var(--primary-color);">
-                    লেখাগুলো লোড হচ্ছে...
-                </div>
+                <div id="writeup-loader">লেখাগুলো লোড হচ্ছে...</div>
             </div>
         </section>
 
@@ -53,20 +55,19 @@
             const loader = document.getElementById('writeup-loader');
             const username = 'vampiresquad';
             const repo = 'Muhammad_Shourov';
-            const label = 'writeup'; // নতুন লেবেল
+            const label = 'writeup'; // 'writeup' লেবেল
 
             // Markdown কনভার্টার চালু করা
             const converter = new showdown.Converter();
 
             async function fetchWriteups() {
                 try {
-                    // 'writeup' লেবেল দিয়ে API কল করা হচ্ছে
                     const response = await fetch(`https://api.github.com/repos/${username}/${repo}/issues?labels=${label}&state=open&sort=created&direction=desc`);
                     if (!response.ok) throw new Error(`GitHub API Error: ${response.status}`);
                     
                     const issues = await response.json();
 
-                    if (loader) loader.style.display = 'none'; // লোডার হাইড করুন
+                    if (loader) loader.style.display = 'none';
 
                     if (issues.length === 0) {
                         container.innerHTML = '<p>এখনো কোনো টেকনিক্যাল লেখা পোস্ট করা হয়নি। দয়া করে GitHub Issues-এ গিয়ে `writeup` লেবেলসহ একটি Issue তৈরি করুন।</p>';
@@ -74,7 +75,7 @@
                     }
 
                     issues.forEach(issue => {
-                        const postHTML = converter.makeHtml(issue.body); // Markdown কে HTML-এ রূপান্তর
+                        const postHTML = converter.makeHtml(issue.body);
                         const postDate = new Date(issue.created_at).toLocaleDateString('bn-BD', {
                             year: 'numeric', month: 'long', day: 'numeric'
                         });
