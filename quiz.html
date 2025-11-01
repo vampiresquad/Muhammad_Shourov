@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Muhammad Shourov - Security IQ Test</title>
+    <meta name="description" content="Test your cybersecurity knowledge. Can you spot a phishing attempt? Do you know what makes a strong password? Find out here.">
+    <meta name="keywords" content="Security Quiz, Phishing Test, Cybersecurity Quiz, IQ Test">
+
+    <script data-goatcounter="https://muhammadshourov.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header class="header-nav">
+        <img src="vampire.jpg" alt="Muhammad Shourov" class="profile-pic">
+        <h1>Muhammad Shourov (Vampire)</h1>
+        <p>Security Awareness Quiz</p>
+        
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="services.html">Services</a>
+            <a href="utils.html">Tools</a>
+            <a href="threatmap.html">Threat Map</a>
+            <a href="quiz.html" class="active">Quiz</a>
+            <a href="writeups.html">Write-ups</a>
+            <a href="blog.html">My Writings</a>
+        </nav>
+    </header>
+
+    <main class="container">
+        
+        <section class="card stagger" style="--order: 1">
+            <h2>Test Your Security IQ</h2>
+            <p>How secure are you online? This short quiz will test your knowledge on a few common security topics. Select your answer for each question and click "Check My Score" at the bottom.</p>
+        </section>
+
+        <section class="card stagger" style="--order: 2">
+            <div class="quiz-container">
+                
+                <div class="quiz-question">
+                    <h3>Q1: Which of these links looks safest to click?</h3>
+                    <label class="quiz-option">
+                        <input type="radio" name="q1" value="a">
+                        <code>https://google.com-login.xyz</code>
+                    </label>
+                    <label class="quiz-option" data-correct="true">
+                        <input type="radio" name="q1" value="b">
+                        <code>https://login.google.com</code>
+                    </label>
+                    <label class="quiz-option">
+                        <input type="radio" name="q1" value="c">
+                        <code>http://google.com/login</code> (Note: HTTP, not HTTPS)
+                    </label>
+                </div>
+
+                <div class="quiz-question">
+                    <h3>Q2: Which of these is the strongest password?</h3>
+                    <label class="quiz-option">
+                        <input type="radio" name="q2" value="a">
+                        <code>Password123!</code>
+                    </label>
+                    <label class="quiz-option">
+                        <input type="radio" name="q2" value="b">
+                        <code>shourov2005</code>
+                    </label>
+                    <label class="quiz-option" data-correct="true">
+                        <input type="radio" name="q2" value="c">
+                        <code>R!d3-Tr33-b@t-f!sh</code>
+                    </label>
+                </div>
+
+                <div class="quiz-question" style="border-bottom: none;">
+                    <h3>Q3: Is it safe to use public WiFi (e.g., at a cafe or airport) for online banking?</h3>
+                    <label class="quiz-option">
+                        <input type="radio" name="q3" value="a">
+                        Yes, as long as the website is HTTPS.
+                    </label>
+                    <label class="quiz-option" data-correct="true">
+                        <input type="radio" name="q3" value="b">
+                        No, it's risky. An attacker on the same network could intercept traffic (Man-in-the-Middle attack).
+                    </label>
+                    <label class="quiz-option">
+                        <input type="radio" name="q3" value="c">
+                        Yes, public WiFi is always encrypted and safe.
+                    </label>
+                </div>
+
+                <button id="quiz-submit" class="btn">Check My Score</button>
+                <div id="quiz-results"></div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>&copy; 2025 - All Rights Reserved by Muhammad Shourov (Vampire).</p>
+    </footer>
+
+    <a href="#" class="back-to-top">▲</a>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            
+            // --- কুইজ লজিক ---
+            const submitButton = document.getElementById('quiz-submit');
+            const resultsContainer = document.getElementById('quiz-results');
+
+            if (submitButton) {
+                submitButton.addEventListener('click', () => {
+                    let score = 0;
+                    const totalQuestions = 3;
+
+                    // সব অপশন থেকে হাইলাইট সরায়
+                    document.querySelectorAll('.quiz-option').forEach(opt => {
+                        opt.classList.remove('correct', 'incorrect');
+                    });
+
+                    // প্রশ্ন ১ চেক
+                    const q1Answer = document.querySelector('input[name="q1"]:checked');
+                    if (q1Answer) {
+                        const parent = q1Answer.parentElement;
+                        if (q1Answer.value === 'b') {
+                            score++;
+                            parent.classList.add('correct');
+                        } else {
+                            parent.classList.add('incorrect');
+                        }
+                    }
+
+                    // প্রশ্ন ২ চেক
+                    const q2Answer = document.querySelector('input[name="q2"]:checked');
+                    if (q2Answer) {
+                        const parent = q2Answer.parentElement;
+                        if (q2Answer.value === 'c') {
+                            score++;
+                            parent.classList.add('correct');
+                        } else {
+                            parent.classList.add('incorrect');
+                        }
+                    }
+
+                    // প্রশ্ন ৩ চেক
+                    const q3Answer = document.querySelector('input[name="q3"]:checked');
+                    if (q3Answer) {
+                        const parent = q3Answer.parentElement;
+                        if (q3Answer.value === 'b') {
+                            score++;
+                            parent.classList.add('correct');
+                        } else {
+                            parent.classList.add('incorrect');
+                        }
+                    }
+
+                    // ফলাফল প্রদর্শন
+                    resultsContainer.textContent = `You scored ${score} out of ${totalQuestions}!`;
+                    if (score === totalQuestions) {
+                        resultsContainer.className = 'good';
+                        resultsContainer.textContent += " Excellent! You have a strong security awareness.";
+                    } else if (score >= 1) {
+                        resultsContainer.className = 'medium';
+                        resultsContainer.textContent += " Good start, but there's more to learn. Check out my Write-ups!";
+                    } else {
+                        resultsContainer.className = 'bad';
+                        resultsContainer.textContent += " Looks like you have a lot to learn about security. You're in the right place!";
+                    }
+                });
+            }
+
+            // --- Back to Top বাটন JS ---
+            const backToTopButton = document.querySelector('.back-to-top');
+            if(backToTopButton) {
+                window.addEventListener('scroll', () => {
+                    if (window.scrollY > 300) {
+                        backToTopButton.classList.add('show');
+                    } else {
+                        backToTopButton.classList.remove('show');
+                    }
+                });
+            }
+        });
+    </script>
+
+</body>
+</html>
