@@ -5,17 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <title>Muhammad Shourov - My Writings (Blog)</title>
-    <meta name="description" content="Personal blog and literary treasures of Muhammad Shourov (Vampire). Stories, poems, and thoughts, loaded from GitHub.">
+    <meta name="description" content="Personal blog and literary treasures of Muhammad Shourov (Vampire). Stories, poems, and thoughts.">
     <meta name="keywords" content="Muhammad Shourov, Vampire, Blog, Writing, অতৃপ্ত, উড়ো চিঠি, Literary, লেখালেখি">
+
+    <script data-goatcounter="https://muhammadshourov.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 
     <link rel="stylesheet" href="style.css">
 </head>
-<body>
-
-    <header class="header-nav">
+<body class="lang-bn"> <header class="header-nav">
         <img src="vampire.jpg" alt="Muhammad Shourov" class="profile-pic">
         <h1>Muhammad Shourov (Vampire)</h1>
-        <p>"লিখতে ভালোবাসি" (সাহিত্যিক) ✍️</p>
+        <p>"I love to write" (Writer) ✍️</p>
         
         <nav>
             <a href="index.html">Home</a>
@@ -30,10 +30,10 @@
         
         <section class="card stagger" style="--order: 1">
             <h2>Vampire’s Literary Treasures</h2>
-            <p>লিখতে বড্ড ভালোবাসি আমি! কেমন অদ্ভুত লিখি, প্রত্যেক'টি লিখা পরবর্তী'তে অধিকাংশ'ই ব্যাক্তি_সৃষ্ট উপন্যাসে স্থান দখল করে ফেলে। আমার ক্ষুদ্র মস্তিষ্কের প্রচেষ্টায় সৃষ্ট কিছু গল্প নিচে উল্লেখ করা হলো।</p>
+            <p>I love to read, write, and tell stories. My literary works are loaded directly from my GitHub Issues.</p>
             
             <div id="blog-container">
-                <div id="blog-loader">লেখাগুলো লোড হচ্ছে...</div>
+                <div id="blog-loader">Loading posts...</div>
             </div>
         </section>
 
@@ -70,25 +70,26 @@
                     if(loader) loader.style.display = 'none';
 
                     if (issues.length === 0) {
-                        blogContainer.innerHTML = '<p>এখনো কোনো লেখা পোস্ট করা হয়নি। দয়া করে GitHub Issues-এ গিয়ে `blog` লেবেলসহ একটি Issue তৈরি করুন।</p>';
+                        blogContainer.innerHTML = '<p>No posts found. Please create a new GitHub Issue with the `blog` label.</p>';
                         return;
                     }
 
                     issues.forEach(issue => {
                         const postHTML = converter.makeHtml(issue.body);
-                        const postDate = new Date(issue.created_at).toLocaleDateString('bn-BD', {
+                        // তারিখ ইংরেজিতে
+                        const postDate = new Date(issue.created_at).toLocaleDateString('en-US', {
                             year: 'numeric', month: 'long', day: 'numeric'
                         });
 
                         const blogPostCard = `
                             <article class="card blog-post" style="opacity:1; transform:none; animation:none;">
                                 <h3>${issue.title}</h3>
-                                <p class="meta">প্রকাশিত: ${postDate}</p>
+                                <p class="meta">Posted on: ${postDate}</p>
                                 <div class="blog-post-content">
                                     ${postHTML}
                                 </div>
                                 <a href="${issue.html_url}" target="_blank" class="btn" style="background: #333; color: white; margin-top: 1rem;">
-                                    মন্তব্য করুন বা GitHub-এ দেখুন
+                                    Comment or View on GitHub
                                 </a>
                             </article>
                         `;
@@ -97,7 +98,7 @@
 
                 } catch (error) {
                     console.error('Error fetching blog posts:', error);
-                    if(loader) loader.innerText = 'লেখাগুলো লোড করা সম্ভব হয়নি।';
+                    if(loader) loader.innerText = 'Failed to load posts.';
                 }
             }
 
