@@ -3,16 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
     <title>Muhammad Shourov - Technical Write-ups</title>
     <meta name="description" content="Technical write-ups, tutorials, and security research by Muhammad Shourov (Vampire).">
     <meta name="keywords" content="Muhammad Shourov, Vampire, Writeup, Tutorial, Ethical Hacking, Security, Termux">
-
     <script data-goatcounter="https://muhammadshourov.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
-
     <link rel="stylesheet" href="style.css">
 </head>
-<body class="lang-en"> <header class="header-nav">
+<body class="lang-en">
+
+    <header class="header-nav">
         <img src="vampire.jpg" alt="Muhammad Shourov" class="profile-pic">
         <h1>Muhammad Shourov (Vampire)</h1>
         <p>Ethical Hacker | Open Source Developer ✍️</p>
@@ -21,6 +20,8 @@
             <a href="index.html">Home</a>
             <a href="services.html">Services</a>
             <a href="utils.html">Tools</a>
+            <a href="threatmap.html">Threat Map</a>
+            <a href="quiz.html">Quiz</a>
             <a href="writeups.html" class="active">Write-ups</a>
             <a href="blog.html">My Writings</a>
         </nav>
@@ -55,9 +56,8 @@
             const loader = document.getElementById('writeup-loader');
             const username = 'vampiresquad';
             const repo = 'Muhammad_Shourov';
-            const label = 'writeup'; // 'writeup' লেবেল
+            const label = 'writeup'; 
 
-            // Markdown কনভার্টার চালু করা
             const converter = new showdown.Converter();
 
             async function fetchWriteups() {
