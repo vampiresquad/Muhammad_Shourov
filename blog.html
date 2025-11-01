@@ -3,16 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
     <title>Muhammad Shourov - My Writings (Blog)</title>
     <meta name="description" content="Personal blog and literary treasures of Muhammad Shourov (Vampire). Stories, poems, and thoughts.">
     <meta name="keywords" content="Muhammad Shourov, Vampire, Blog, Writing, অতৃপ্ত, উড়ো চিঠি, Literary, লেখালেখি">
-
     <script data-goatcounter="https://muhammadshourov.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
-
     <link rel="stylesheet" href="style.css">
 </head>
-<body class="lang-bn"> <header class="header-nav">
+<body class="lang-bn">
+
+    <header class="header-nav">
         <img src="vampire.jpg" alt="Muhammad Shourov" class="profile-pic">
         <h1>Muhammad Shourov (Vampire)</h1>
         <p>"I love to write" (Writer) ✍️</p>
@@ -21,6 +20,8 @@
             <a href="index.html">Home</a>
             <a href="services.html">Services</a>
             <a href="utils.html">Tools</a>
+            <a href="threatmap.html">Threat Map</a>
+            <a href="quiz.html">Quiz</a>
             <a href="writeups.html">Write-ups</a>
             <a href="blog.html" class="active">My Writings</a>
         </nav>
@@ -55,9 +56,8 @@
             const loader = document.getElementById('blog-loader');
             const username = 'vampiresquad';
             const repo = 'Muhammad_Shourov';
-            const label = 'blog'; // 'blog' লেবেল
+            const label = 'blog'; 
 
-            // Markdown কনভার্টার চালু করা
             const converter = new showdown.Converter();
 
             async function fetchBlogPosts() {
@@ -76,7 +76,6 @@
 
                     issues.forEach(issue => {
                         const postHTML = converter.makeHtml(issue.body);
-                        // তারিখ ইংরেজিতে
                         const postDate = new Date(issue.created_at).toLocaleDateString('en-US', {
                             year: 'numeric', month: 'long', day: 'numeric'
                         });
