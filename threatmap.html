@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Muhammad Shourov - Live Cyber Threat Map</title>
+    <meta name="description" content="A live, real-time map of global cyber attacks. See digital threats as they happen around the world.">
+    <meta name="keywords" content="Live Threat Map, Cyber Attack Map, Real-time Hacking, Cybersecurity">
+
+    <script data-goatcounter="https://muhammadshourov.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header class="header-nav">
+        <img src="vampire.jpg" alt="Muhammad Shourov" class="profile-pic">
+        <h1>Muhammad Shourov (Vampire)</h1>
+        <p>Live Cyber Threat Map</p>
+        
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="services.html">Services</a>
+            <a href="utils.html">Tools</a>
+            <a href="threatmap.html" class="active">Threat Map</a>
+            <a href="quiz.html">Quiz</a>
+            <a href="writeups.html">Write-ups</a>
+            <a href="blog.html">My Writings</a>
+        </nav>
+    </header>
+
+    <main class="container">
+        
+        <section class="card stagger" style="--order: 1">
+            <h2>Live Global Cyber Attack Map</h2>
+            <p>This is a live visualization of cyber attacks happening across the globe, provided by Fortinet. It helps illustrate the constant and real nature of digital threats that my services aim to protect against.</p>
+            <p style="font-size: 0.9rem; color: #8b949e;">Note: The map may take a few seconds to load.</p>
+        </section>
+
+        <section class="card stagger" style="--order: 2">
+            <div class="map-container">
+                <iframe src="https://threatmap.fortiguard.com/ng/index.html" scrolling="no"></iframe>
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>&copy; 2025 - All Rights Reserved by Muhammad Shourov (Vampire).</p>
+    </footer>
+
+    <a href="#" class="back-to-top">▲</a>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // --- Back to Top বাটন JS ---
+            const backToTopButton = document.querySelector('.back-to-top');
+            if(backToTopButton) {
+                window.addEventListener('scroll', () => {
+                    if (window.scrollY > 300) {
+                        backToTopButton.classList.add('show');
+                    } else {
+                        backToTopButton.classList.remove('show');
+                    }
+                });
+            }
+        });
+    </script>
+
+</body>
+</html>
