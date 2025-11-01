@@ -3,15 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
     <title>Muhammad Shourov (Vampire) - Official Website</title>
     <meta name="description" content="Muhammad Shourov's official portfolio. Ethical Hacker, Founder of Vampire Squad, and Cyber Security Consultant from Bangladesh.">
     <meta name="keywords" content="Muhammad Shourov, Vampire, Ethical Hacker, Cyber Security, Vampire Squad, Bangladesh, Mymensingh, Shourov Hacker">
-
     <script data-goatcounter="https://muhammadshourov.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
-
     <link rel="stylesheet" href="style.css">
-    
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jquery.terminal/css/jquery.terminal.min.css">
 </head>
 <body>
@@ -27,6 +23,8 @@
             <a href="index.html" class="active">Home</a>
             <a href="services.html">Services</a>
             <a href="utils.html">Tools</a>
+            <a href="threatmap.html">Threat Map</a>
+            <a href="quiz.html">Quiz</a>
             <a href="writeups.html">Write-ups</a>
             <a href="blog.html">My Writings</a>
         </nav>
@@ -176,7 +174,6 @@
         $(document).ready(function() {
             // --- হ্যাকার টার্মিনাল সেটআপ ---
             $('#hacker-terminal').terminal(function(command, term) {
-                // ... (টার্মিনালের সমস্ত কমান্ড এখানে) ...
                 const commands = {
                     'help': function() {
                         term.echo(
@@ -267,7 +264,6 @@
                     }
                 };
 
-                // কমান্ড হ্যান্ডলার
                 const parts = command.split(' ');
                 const cmd = parts[0];
                 const args = parts.slice(1);
@@ -318,9 +314,7 @@
                     const filteredRepos = repos
                         .filter(repo => !repo.fork && !excludeRepos.includes(repo.name))
                         .sort((a, b) => b.stargazers_count - a.stargazers_count);
-
                     loader.hide();
-
                     filteredRepos.forEach(repo => {
                         const toolCard = `
                             <div class="tool-card">
