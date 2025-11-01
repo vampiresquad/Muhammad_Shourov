@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="bn">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,11 +8,11 @@
     <meta name="description" content="Technical write-ups, tutorials, and security research by Muhammad Shourov (Vampire).">
     <meta name="keywords" content="Muhammad Shourov, Vampire, Writeup, Tutorial, Ethical Hacking, Security, Termux">
 
+    <script data-goatcounter="https://muhammadshourov.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+
     <link rel="stylesheet" href="style.css">
 </head>
-<body>
-
-    <header class="header-nav">
+<body class="lang-en"> <header class="header-nav">
         <img src="vampire.jpg" alt="Muhammad Shourov" class="profile-pic">
         <h1>Muhammad Shourov (Vampire)</h1>
         <p>Ethical Hacker | Open Source Developer ✍️</p>
@@ -30,10 +30,10 @@
         
         <section class="card stagger" style="--order: 1">
             <h2>Technical Write-ups & Tutorials</h2>
-            <p> “You’ll find detailed information here about my technical writings, hacking tutorials, and various projects.”</p>
+            <p>Here are my technical articles, hacking tutorials, and detailed discussions about various projects. Posts are loaded directly from my GitHub Issues.</p>
             
             <div id="writeup-container">
-                <div id="writeup-loader">লেখাগুলো লোড হচ্ছে...</div>
+                <div id="writeup-loader">Loading write-ups...</div>
             </div>
         </section>
 
@@ -70,25 +70,25 @@
                     if (loader) loader.style.display = 'none';
 
                     if (issues.length === 0) {
-                        container.innerHTML = '<p>এখনো কোনো টেকনিক্যাল লেখা পোস্ট করা হয়নি। দয়া করে GitHub Issues-এ গিয়ে `writeup` লেবেলসহ একটি Issue তৈরি করুন।</p>';
+                        container.innerHTML = '<p>No technical write-ups posted yet. Please create a new GitHub Issue with the `writeup` label.</p>';
                         return;
                     }
 
                     issues.forEach(issue => {
                         const postHTML = converter.makeHtml(issue.body);
-                        const postDate = new Date(issue.created_at).toLocaleDateString('bn-BD', {
+                        const postDate = new Date(issue.created_at).toLocaleDateString('en-US', {
                             year: 'numeric', month: 'long', day: 'numeric'
                         });
 
                         const postCard = `
                             <article class="card blog-post" style="opacity:1; transform:none; animation:none;">
                                 <h3>${issue.title}</h3>
-                                <p class="meta">Published on: ${postDate}</p>
+                                <p class="meta">Posted on: ${postDate}</p>
                                 <div class="blog-post-content">
                                     ${postHTML}
                                 </div>
                                 <a href="${issue.html_url}" target="_blank" class="btn" style="background: #333; color: white; margin-top: 1rem;">
-                                    মন্তব্য করুন বা GitHub-এ দেখুন
+                                    Comment or View on GitHub
                                 </a>
                             </article>
                         `;
@@ -97,7 +97,7 @@
 
                 } catch (error) {
                     console.error('Error fetching write-ups:', error);
-                    if (loader) loader.innerText = 'লেখাগুলো লোড করা সম্ভব হয়নি।';
+                    if (loader) loader.innerText = 'Failed to load write-ups.';
                 }
             }
 
