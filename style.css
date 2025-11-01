@@ -283,6 +283,14 @@ blockquote {
     font-size: 1.05rem;
     color: var(--text-color);
 }
+/* এই স্টাইলটি blog.html পেজের বাংলা লেখার জন্য */
+.lang-bn .blog-post-content {
+    font-family: 'Hind Siliguri', sans-serif;
+}
+/* এই স্টাইলটি writeups.html পেজের ইংরেজি লেখার জন্য */
+.lang-en .blog-post-content {
+    font-family: 'Poppins', sans-serif;
+}
 .blog-post-content p { margin-bottom: 1rem; }
 .blog-post-content h1, .blog-post-content h2, .blog-post-content h3 {
     color: var(--heading-color);
@@ -445,6 +453,86 @@ blockquote {
     word-wrap: break-word;
     white-space: pre-wrap;
     min-height: 50px;
+}
+
+/* --- থ্রেট ম্যাপ পেজ --- */
+.map-container {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    padding-top: 65%; /* 16:9 Aspect Ratio */
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    background: #000;
+}
+.map-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+/* --- কুইজ পেজ --- */
+.quiz-container {
+    background-color: #0d1117;
+    border: 1px solid var(--border-color);
+    padding: 1.5rem;
+    border-radius: 8px;
+}
+.quiz-question {
+    margin-bottom: 2rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px dashed var(--border-color);
+}
+.quiz-question h3 {
+    color: var(--secondary-color);
+    margin-bottom: 1rem;
+}
+.quiz-option {
+    display: block;
+    background: #161b22;
+    padding: 1rem;
+    border-radius: 6px;
+    margin-bottom: 0.5rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    border: 1px solid var(--border-color);
+}
+.quiz-option:hover {
+    background-color: #30363d;
+}
+.quiz-option input {
+    margin-right: 10px;
+}
+.quiz-option.correct { /* উত্তর সঠিক হলে */
+    background-color: #0f5132;
+    border-color: #00f2ea;
+}
+.quiz-option.incorrect { /* উত্তর ভুল হলে */
+    background-color: #842029;
+    border-color: #ff4d4d;
+}
+#quiz-submit {
+    margin-top: 1rem;
+}
+#quiz-results {
+    margin-top: 2rem;
+    font-size: 1.5rem;
+    font-weight: 600;
+    text-align: center;
+}
+#quiz-results.good {
+    color: var(--primary-color);
+}
+#quiz-results.medium {
+    color: #fce883;
+}
+#quiz-results.bad {
+    color: #ff4d4d;
 }
 
 /* --- ফুটার --- */
